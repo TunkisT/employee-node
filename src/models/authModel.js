@@ -1,6 +1,5 @@
 const mysql = require('mysql2/promise');
 const dbConfig = require('../dbConfig');
-const { failResponse } = require('../utils/dbHelpers');
 
 async function addUserToDb(username, email, password) {
   try {

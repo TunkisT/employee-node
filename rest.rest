@@ -1,11 +1,16 @@
 GET http://localhost:3000/
+Content-Type: application/json
+
+{
+    "user_id": 1
+}
 ###
 POST http://localhost:3000/register
 Content-Type: application/json
 
 {
-    "username": "Mike",
-    "email": "mike@mike.com",
+    "username": "John",
+    "email": "john@john.com",
     "password": "123456"
 }
 ###
