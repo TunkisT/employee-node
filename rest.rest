@@ -5,6 +5,18 @@ Content-Type: application/json
     "user_id": 1
 }
 ###
+POST http://localhost:3000/add
+Content-Type: application/json
+
+{
+    "name": "Tautvydas",
+    "surname": "Tunkis",
+    "email": "ttunkis@gmail.com",
+    "address": "Titnago g. 7",
+    "phone": "+37066361183",
+    "user_id": 1
+}
+###
 POST http://localhost:3000/register
 Content-Type: application/json
 
