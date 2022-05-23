@@ -49,6 +49,32 @@ async function validateLogin(req, res, next) {
   }
 }
 
+async function validateEmployee(req, res, next) {
+  const schema = Joi.object({
+    name: Joi.string().min(3).required(),
+    surname: Joi.string().min(3).required(),
+    email: Joi.string().email().required(),
+    address: Joi.string().max(50).required(),
+    phone: Joi.string().min(5).max(15).required(),
+    user_id: Joi.number().required(),
+  });
+
+  try {
+    await schema.validateAsync(req.body, { abortEarly: false });
+    next();
+  } catch (error) {
+    const formatedError = error.details.map((detail) => ({
+      field: detail.context.key,
+      message: detail.message,
+    }));
+    const responseToSend = {
+      success: false,
+      error: formatedError,
+    };
+    res.status(400).json(responseToSend);
+  }
+}
+
 function hashPass(plainPassword) {
   return bcrypt.hashSync(plainPassword, 10);
 }
@@ -69,4 +95,5 @@ module.exports = {
   generateJwtToken,
   validateRegistration,
   validateLogin,
+  validateEmployee,
 };
