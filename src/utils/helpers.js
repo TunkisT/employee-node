@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const Joi = require('joi');
+const { failResponse } = require('./dbHelpers');
 const jwtSecret = process.env.JWT_TOKEN_SECRET;
 
 async function validateRegistration(req, res, next) {
@@ -89,6 +90,27 @@ function generateJwtToken(userObj) {
   });
 }
 
+function verifyJwtToken(token) {
+  try {
+    const payload = jwt.verify(token, jwtSecret);
+    return payload;
+  } catch (error) {
+    console.log('error ===', error);
+    return false;
+  }
+}
+
+function validateToken(req, res, next) {
+  const authHeader = req.headers.authorization;
+  const tokenGotFromUser = authHeader && authHeader.split(' ')[1];
+  if (!tokenGotFromUser) return failResponse(res, 'no token', 401);
+  const verifyResult = verifyJwtToken(tokenGotFromUser);
+
+  if (verifyResult === false) return failResponse(res, 'invalid token', 403);
+  req.userId = verifyResult.id;
+  return next();
+}
+
 module.exports = {
   hashPass,
   verifyHash,
@@ -96,4 +118,5 @@ module.exports = {
   validateRegistration,
   validateLogin,
   validateEmployee,
+  validateToken,
 };

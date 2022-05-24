@@ -1,9 +1,6 @@
 GET http://localhost:3000/
-Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsImlhdCI6MTY1MzM4MjU2OCwiZXhwIjoxNjUzMzkzMzY4fQ.k_WXrFoCVxfF7x0zc_5S3p8SvhHAKPXGKxGWjc2T8DI
 
-{
-    "user_id": 1
-}
 ###
 POST http://localhost:3000/add
 Content-Type: application/json
