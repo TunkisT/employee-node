@@ -13,6 +13,9 @@ async function getEmployee(req, res) {
 
 async function writeEmployee(req, res) {
   const data = req.body;
+  data.user_id = req.userId;
+  console.log('data ===', data);
+  console.log('req.userId ===', req.userId);
   const employee = await putEmployeeToDb(data);
   if (!employee) {
     failResponse(res);

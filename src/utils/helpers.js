@@ -57,7 +57,6 @@ async function validateEmployee(req, res, next) {
     email: Joi.string().email().required(),
     address: Joi.string().max(50).required(),
     phone: Joi.string().min(5).max(15).required(),
-    user_id: Joi.number().required(),
   });
 
   try {
