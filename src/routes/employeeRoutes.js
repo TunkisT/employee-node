@@ -5,6 +5,6 @@ const { validateEmployee, validateToken } = require('../utils/helpers');
 const employeeRoutes = express.Router();
 
 employeeRoutes.get('/', validateToken, getEmployee);
-employeeRoutes.post('/add', validateEmployee, writeEmployee);
+employeeRoutes.post('/add', validateEmployee, validateToken, writeEmployee);
 
 module.exports = employeeRoutes;
