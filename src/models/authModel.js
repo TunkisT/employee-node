@@ -1,11 +1,11 @@
 const mysql = require('mysql2/promise');
 const dbConfig = require('../dbConfig');
 
-async function addUserToDb(username, email, password) {
+async function addUserToDb(email, password) {
   try {
     const connection = await mysql.createConnection(dbConfig);
-    const sql = `INSERT INTO users (username, email, password) VALUES (?, ?, ?)`;
-    const [result] = await connection.execute(sql, [username, email, password]);
+    const sql = `INSERT INTO users (email, password) VALUES (?, ?)`;
+    const [result] = await connection.execute(sql, [email, password]);
     await connection.close();
     return result;
   } catch (error) {

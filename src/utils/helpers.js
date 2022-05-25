@@ -7,7 +7,6 @@ const jwtSecret = process.env.JWT_TOKEN_SECRET;
 
 async function validateRegistration(req, res, next) {
   const schema = Joi.object({
-    username: Joi.string().min(4).required(),
     email: Joi.string().email().required(),
     password: Joi.string().min(5).max(50).required(),
   });
@@ -18,7 +17,7 @@ async function validateRegistration(req, res, next) {
   } catch (error) {
     const formatedError = error.details.map((detail) => ({
       field: detail.context.key,
-      message: detail.message,
+      message: detail.context.key + detail.message.split('"')[2],
     }));
     const responseToSend = {
       success: false,

@@ -3,9 +3,9 @@ const { failResponse, successResponse } = require('../utils/dbHelpers');
 const { hashPass, verifyHash, generateJwtToken } = require('../utils/helpers');
 
 async function authController(req, res) {
-  const { username, email, password } = req.body;
+  const { email, password } = req.body;
   const hashedPassword = hashPass(password);
-  const insertUser = await addUserToDb(username, email, hashedPassword);
+  const insertUser = await addUserToDb(email, hashedPassword);
   if (!insertUser) {
     failResponse(res);
     return;
