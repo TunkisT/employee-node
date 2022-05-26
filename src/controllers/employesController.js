@@ -1,4 +1,8 @@
-const { getEmployeeFromDb, putEmployeeToDb } = require('../models/employeeModel');
+const {
+  getEmployeeFromDb,
+  putEmployeeToDb,
+  removeEmployeeFromDb,
+} = require('../models/employeeModel');
 const { failResponse, successResponse } = require('../utils/dbHelpers');
 
 async function getEmployee(req, res) {
@@ -22,7 +26,18 @@ async function writeEmployee(req, res) {
   successResponse(res, employee);
 }
 
+async function deleteEmployee(req, res) {
+  const { id } = req.params;
+  const employee = await removeEmployeeFromDb(id);
+  if (employee.affectedRows !== 1) {
+    failResponse(res, 'User has not deleted');
+    return;
+  }
+  successResponse(res, 'User deleted!');
+}
+
 module.exports = {
   getEmployee,
   writeEmployee,
+  deleteEmployee,
 };
