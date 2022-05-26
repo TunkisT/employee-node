@@ -39,7 +39,7 @@ async function validateLogin(req, res, next) {
   } catch (error) {
     const formatedError = error.details.map((detail) => ({
       field: detail.context.key,
-      message: detail.message,
+      message: detail.context.key + detail.message.split('"')[2],
     }));
     const responseToSend = {
       success: false,
@@ -64,7 +64,7 @@ async function validateEmployee(req, res, next) {
   } catch (error) {
     const formatedError = error.details.map((detail) => ({
       field: detail.context.key,
-      message: detail.message,
+      message: detail.context.key + detail.message.split('"')[2],
     }));
     const responseToSend = {
       success: false,
@@ -93,7 +93,6 @@ function verifyJwtToken(token) {
     const payload = jwt.verify(token, jwtSecret);
     return payload;
   } catch (error) {
-    console.log('error ===', error);
     return false;
   }
 }

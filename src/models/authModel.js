@@ -9,7 +9,7 @@ async function addUserToDb(email, password) {
     await connection.close();
     return result;
   } catch (error) {
-    return false;
+    return { success: false, message: error.sqlMessage };
   }
 }
 
