@@ -30,7 +30,7 @@ async function deleteEmployee(req, res) {
   const { id } = req.params;
   const employee = await removeEmployeeFromDb(id);
   if (employee.affectedRows !== 1) {
-    failResponse(res, 'User has not deleted');
+    failResponse(res, 'Something went wrong. Please try again');
     return;
   }
   successResponse(res, 'User deleted!');

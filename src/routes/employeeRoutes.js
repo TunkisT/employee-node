@@ -10,6 +10,6 @@ const employeeRoutes = express.Router();
 
 employeeRoutes.get('/', validateToken, getEmployee);
 employeeRoutes.post('/add', validateEmployee, validateToken, writeEmployee);
-employeeRoutes.delete('/delete/:id', deleteEmployee);
+employeeRoutes.delete('/delete/:id', validateToken, deleteEmployee);
 
 module.exports = employeeRoutes;

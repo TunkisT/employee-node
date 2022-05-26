@@ -8,11 +8,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxN
 Content-Type: application/json
 
 {
-    "name": "Jopp",
-    "surname": "Tunkis",
-    "email": "ttunkis@gmail.com",
-    "address": "Titnago g. 7",
-    "phone": "+37066361183"
+    "name": "Mike",
+    "surname": "Kimiter",
+    "email": "mikes@gmail.com",
+    "address": "Henry str. 7",
+    "phone": "+3458656963"
 }
 ###
 POST http://localhost:3000/register

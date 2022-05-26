@@ -43,7 +43,6 @@ async function removeEmployeeFromDb(employee_id) {
     await connection.close();
     return result;
   } catch (error) {
-    console.log('error ===', error);
     return false;
   }
 }
