@@ -12,10 +12,6 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 
-app.get('/test', (req, res) => {
-  res.json('Hello from nodeJS');
-});
-
 app.use('/', authRoutes);
 app.use('/', employeeRoutes);
 
