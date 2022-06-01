@@ -1,11 +1,17 @@
-## install
+### Manage employees app server side using NODE.js
 
-1. npm i
-2. copy .env example to .env and enter your values
+## Idea:
+This project is for administrators whose can save company employees contacts.
+They can look, add and remove employees.
+For working with this app you need to create your new account and after that you can add all list of your employees.
 
-## how to start server
+## How to install project
+1. Download or clone the project from github.
+2. In terminal write "npm i" - this line call installation for all dependencies and required files.
+3. Copy .env example to .env and enter your values
 
-1. npm start
+## How to start server
+1. Use "npm start" to start server.
 
 ## dependencies
 
@@ -17,3 +23,6 @@
 - "jsonwebtoken"
 - "morgan"
 - "mysql2"
+
+## Link to front-end site of this app using REACT.js
+https://github.com/TunkisT/employe-react
