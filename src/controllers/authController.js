@@ -6,7 +6,7 @@ async function authController(req, res) {
   const { email, password } = req.body;
   const hashedPassword = hashPass(password);
   const insertUser = await addUserToDb(email, hashedPassword);
-  if (!insertUser.success) {
+   if (insertUser.success === false) {
     let message = [];
     if (insertUser.message.split(' ')[0] === 'Duplicate') {
       message = [{ message: 'This email address is already being used' }];
